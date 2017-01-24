@@ -1,5 +1,5 @@
 /*
- * Person.cpp
+ * Listener.cpp
  *
  *  Created on: 22/10/2016
  *      Author: Luis Rocha
@@ -24,7 +24,8 @@ Queue<Listener> * ActivityToListen::GetMyListeners() {
 }
 
 void ActivityToListen::NotifyListeners() {
-	for(QueueNode<Listener> * Current = myListeners->GetHead(); Current != NULL; Current = Current->Next){
+	for (QueueNode<Listener> * Current = myListeners->GetHead();
+			Current != NULL; Current = Current->Next) {
 		Current->Data->Events(this->id);
 	}
 }
@@ -37,10 +38,22 @@ Listener::~Listener() {
 
 }
 
-void Listener::Events(uint16_t event){
+void Listener::Events(uint16_t event) {
 	myMutex.lock();
 	this->events |= event;
-	printf("%p | %u\n", this, this->events);
+	//printf("Listener %p - Events %x\n", this, this->events);
 	myMutex.unlock();
+}
 
+uint16_t Listener::GetEvents() {
+	uint16_t events;
+	myMutex.lock();
+	events = this->events;
+	myMutex.unlock();
+	return events;
+}
+
+void Listener::PrintEvents() {
+	uint16_t events = this->GetEvents();
+	printf("%p - Event %x\n", this, events);
 }

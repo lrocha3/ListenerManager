@@ -13,15 +13,11 @@
 #include <stdint.h>
 #include <stdio.h>
 
-
-
-template<class X> class QueueNode{
+template<class X> class QueueNode {
 public:
 	X * Data;
 	QueueNode * Next;
 };
-
-
 
 template<class X> class Queue {
 public:
@@ -36,6 +32,5 @@ private:
 	uint8_t Lenght;
 
 };
-
 
 #endif /* SRC_QUEUE_H_ */

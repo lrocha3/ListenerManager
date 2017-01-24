@@ -19,7 +19,8 @@ LIBS_INC ?=
 
 SRC = $(SRC_DIR)/main.cpp   \
 	$(SRC_DIR)/Queue.cpp	\
-	$(SRC_DIR)/Listener.cpp
+	$(SRC_DIR)/Listener.cpp	\
+	$(SRC_DIR)/Phone.cpp
 
 OBJ  = $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 #$(info $$OBJ is [${OBJ}]) to print var

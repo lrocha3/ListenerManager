@@ -8,31 +8,26 @@
 #include <Listener.h>
 #include "Queue.h"
 
-/* Types I allow:
- * 		Listener
- * 		int
- */
+/* This template can be of type Listener or int. */
 
-template class Queue<Listener>;
-template class QueueNode<Listener>;
+template class Queue<Listener> ;
+template class QueueNode<Listener> ;
 
-template class Queue<int>;
-template class QueueNode<int>;
+template class Queue<int> ;
+template class QueueNode<int> ;
 
-
-
-template <class X>
+template<class X>
 Queue<X>::Queue() {
 	Head = NULL;
 	Lenght = 0;
 }
 
-template <class X>
+template<class X>
 Queue<X>::~Queue() {
 
-	QueueNode<X> * Current, * Auxiliar;
+	QueueNode<X> * Current, *Auxiliar;
 
-	for(Current = Head; Current != NULL;){
+	for (Current = Head; Current != NULL;) {
 		Auxiliar = Current->Next;
 		delete Current;
 		Current = Auxiliar;
@@ -40,7 +35,7 @@ Queue<X>::~Queue() {
 
 }
 
-template <class X>
+template<class X>
 bool Queue<X>::AddToQueue(X *Data) {
 
 	QueueNode<X> * NewQueueNode = new QueueNode<X>();
@@ -59,19 +54,17 @@ bool Queue<X>::AddToQueue(X *Data) {
 
 }
 
-template <class X>
-void Queue<X>::PrintQueue(){
+template<class X>
+void Queue<X>::PrintQueue() {
 
-	for(QueueNode<X> * Current = Head; Current != NULL; Current = Current->Next){
+	for (QueueNode<X> * Current = Head; Current != NULL; Current =
+			Current->Next) {
 		printf("%p\n", Current->Data);
 	}
 }
 
-
-template <class X>
-QueueNode<X> * Queue<X>::GetHead(){
+template<class X>
+QueueNode<X> * Queue<X>::GetHead() {
 	return Head;
 }
-
-
 

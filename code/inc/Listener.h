@@ -1,7 +1,7 @@
 /*
- * Person.h
+ * Listener.h
  *
- *  Created on: 22/10/2016
+ *  Created on: 23/01/2017
  *      Author: Luis Rocha
  */
 
@@ -22,6 +22,9 @@ public:
 	Listener();
 	~Listener();
 	void Events(uint16_t event);
+	uint16_t GetEvents();
+	virtual void PrintEvents();
+
 private:
 	mutex myMutex;
 	uint16_t events; // each bit has one event
